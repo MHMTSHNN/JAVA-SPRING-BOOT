@@ -1,0 +1,22 @@
+services:
+  db:
+    container_name: postgres-spring-boot-mhmt_demo_con
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: mehmet
+      POSTGRES_PASSWORD: sifre123
+      POSTGRES_DB: mydb
+    volumes:
+      - db:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - db
+    restart: unless-stopped
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  db:
